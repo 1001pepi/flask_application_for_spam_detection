@@ -21,7 +21,13 @@ def detector():
         mail_2 = vectorizer.transform([mail]).toarray()
         p = lr.predict_proba(mail_2.reshape(1, -1))[0]
 
-        message = "Ce mail est un spam à " + str(p[0]) + " %."
+        ham, spam = p[0], p[1]
+
+        if spam > ham:
+            message = "Ce mail est un spam à " + str(spam * 100) + " %."
+        
+        else:
+            message = "Ce mail est un ham à " + str(ham * 100) + " %."
 
         return render_template("home.html", message=message, mail=mail)
 
