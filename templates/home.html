@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Spam detector</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row header">
+               <p class="title" align="center">
+                    Spam detector (TANANKEM MENKEM Ramses)
+               </p>
+            </div>
+        </div>
+
+        <div class="container form" align="center">
+            <form method="POST" action="/api/spamdetector">
+                <div class="form-group" style="width: 500px;">
+                  <label for="mail">Mail</label>
+                  <textarea class="form-control" id="mail" name="mail" placeholder="Enter le mail" rows="5">{{ mail }}</textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        
+        {% if message %}
+            <div class="container result" align="center">
+                {{ message }}
+            </div>
+        {% endif %}
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </body>
+</html>
